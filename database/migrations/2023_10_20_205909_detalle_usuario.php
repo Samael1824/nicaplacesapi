@@ -11,7 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('detalle_usuario', function (Blueprint $table) {
+            $table->id();
+            $table->foreign('id_usuario')->references('id')->on('usuario');
+            $table->string('contraseña_anterior');
+            $table->string('contraseña_actual');
+            $table->date('fecha');
+
+            
+        });
     }
 
     /**
@@ -19,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('detalle_usuario');
     }
 };
