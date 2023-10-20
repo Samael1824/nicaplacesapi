@@ -11,7 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('conexiones', function (Blueprint $table) {
+            $table->id();
+            $table->foreign('id_usuario')->references('id')->on('usuario');
+            $table->string('ip');
+            $table->string('mac');
+            $table->string('navegador');
+            $table->string('version_navegador');
+            $table->string('OS');
+            $table->string('version_OS');
+                 
+        });
     }
 
     /**
@@ -19,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('conexiones');
     }
 };

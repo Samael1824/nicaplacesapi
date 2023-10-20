@@ -12,6 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         //
+        Schema::create('negocio', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('id_persona');
+            $table->foreign('id_persona')->references('id')->on('persona');
+            $table->string('descripcion');
+            $table->string('sector_comercial');
+            
+        });
     }
 
     /**
@@ -19,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('negocio');
     }
 };

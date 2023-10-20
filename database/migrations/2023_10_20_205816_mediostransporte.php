@@ -11,7 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('mediostransporte', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre');
+            $table->string('descripcion');
+            $table->decimal('costo',10,2);
+            $table->string('accesibilidad');
+            $table->unsignedBigInteger('capacidad');
+            $table->string('horario');
+            
+        });
     }
 
     /**
@@ -19,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('mediostransporte');
     }
 };
