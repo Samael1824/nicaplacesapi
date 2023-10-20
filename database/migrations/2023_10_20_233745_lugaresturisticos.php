@@ -13,18 +13,22 @@ return new class extends Migration
     {
         Schema::create('lugaresturisticos', function (Blueprint $table) {
             $table->id();
-            $table->foreign('id_departamento')->references('id')->on('departamento');
-            $table->foreign('id_medtransporte')->references('id')->on('mediostransporte');
-            $table->foreign('id_expadicionales')->references('id')->on('experienciasadicionales');
+            $table->unsignedBigInteger('id_departamento');
+            $table->unsignedBigInteger('id_medtransporte');
+            $table->unsignedBigInteger('id_expadicionales');
             $table->string('nombre');
             $table->string('descripcion');
-            $table->point('ubicacion');
+            $table->point('ubicacion')->nullable();
             $table->string('accesibilidad');
             $table->string('horario');
             $table->string('tipoexperiencia');
             $table->string('categoria');
-            
+        
+            $table->foreign('id_departamento')->references('id')->on('departamento');
+            $table->foreign('id_medtransporte')->references('id')->on('mediostransporte');
+            $table->foreign('id_expadicionales')->references('id')->on('experienciasadicionales');
         });
+        
     }
 
     /**

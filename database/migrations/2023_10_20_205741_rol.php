@@ -13,13 +13,13 @@ return new class extends Migration
     {
         //
         Schema::create("rol", function (Blueprint $table) {
-            Schema::create('rol', function (Blueprint $table) {
+            
                 $table->id();
                 $table->string('nombre', 80);
                 $table->string('descripcion', 250);
                 $table->integer('estado')->default(1);
                 $table->timestamps();
-            });
+            
         });
     }
 

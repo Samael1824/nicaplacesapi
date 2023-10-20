@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('detalle_usuario', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_usuario');
             $table->foreign('id_usuario')->references('id')->on('usuario');
             $table->string('contraseña_anterior');
             $table->string('contraseña_actual');
