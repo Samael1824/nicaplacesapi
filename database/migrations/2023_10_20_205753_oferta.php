@@ -12,6 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         //
+        Schema::create("oferta", function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('id_negocio');
+            $table->text('descripcion')->nullable();
+            $table->integer('precio')->nullable();
+            $table->timestamp('fecha_inicio')->nullable();
+            $table->datetime('fecha_final')->nullable();
+            $table->integer('estado')->default(1);
+            $table->timestamps();
+
+            $table->foreign('id_negocio')->references('id')->on('negocio');
+        });
     }
 
     /**
@@ -20,5 +32,6 @@ return new class extends Migration
     public function down(): void
     {
         //
+        Schema::dropIfExists('oferta');
     }
 };

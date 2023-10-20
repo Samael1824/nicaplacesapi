@@ -12,6 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         //
+        Schema::create("usuario", function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('id_rol');
+            $table->unsignedBigInteger('id_persona');
+            $table->string('codigo', 10)->unique();
+            $table->string('usuario', 40);
+            $table->timestamp('fecha_registro');
+            $table->integer('estado')->default(1);
+            $table->timestamps();
+
+            $table->foreign('id_rol')->references('id')->on('rol');
+            $table->foreign('id_persona')->references('id')->on('persona');
+        });
+
     }
 
     /**
@@ -20,5 +34,6 @@ return new class extends Migration
     public function down(): void
     {
         //
+        Schema::dropIfExists('usuario');
     }
 };

@@ -12,6 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         //
+        Schema::create("persona_juridica", function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('id_persona');
+            $table->foreign('id_persona')->references('id')->on('persona');
+            $table->string('apellido', 80);
+            $table->string('cedula', 14)->unique();
+            $table->date('fecha_nacimiento')->nullable();
+            $table->char('genero', 1)->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -20,5 +30,6 @@ return new class extends Migration
     public function down(): void
     {
         //
+        Schema::dropIfExists('persona_juridica');
     }
 };

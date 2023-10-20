@@ -11,7 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        // 
+        Schema::create("persona", function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre', 50);
+            $table->unsignedBigInteger('telefono')->nullable();
+            $table->string('correo', 25)->unique();
+            $table->string('foto', 250)->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -20,5 +28,6 @@ return new class extends Migration
     public function down(): void
     {
         //
+        Schema::dropIfExists('persona');
     }
 };
