@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('conexiones', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_usuario');
-            $table->foreign('id_usuario')->references('id')->on('usuario');
+            $table->foreign('id_usuario')->references('id')->on('usuarios');
             $table->string('ip');
             $table->string('mac');
             $table->string('navegador');

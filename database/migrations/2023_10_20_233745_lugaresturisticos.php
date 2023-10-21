@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string('tipoexperiencia');
             $table->string('categoria');
         
-            $table->foreign('id_departamento')->references('id')->on('departamento');
-            $table->foreign('id_medtransporte')->references('id')->on('mediostransporte');
+            $table->foreign('id_departamento')->references('id')->on('departamentos');
+            $table->foreign('id_medtransporte')->references('id')->on('mediostransportes');
             $table->foreign('id_expadicionales')->references('id')->on('experienciasadicionales');
         });
         

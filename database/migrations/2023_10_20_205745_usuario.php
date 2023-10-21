@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         //
-        Schema::create("usuario", function (Blueprint $table) {
+        Schema::create("usuarios", function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_rol');
             $table->unsignedBigInteger('id_persona');
@@ -22,8 +22,8 @@ return new class extends Migration
             $table->integer('estado')->default(1);
             $table->timestamps();
 
-            $table->foreign('id_rol')->references('id')->on('rol');
-            $table->foreign('id_persona')->references('id')->on('persona');
+            $table->foreign('id_rol')->references('id')->on('rols');
+            $table->foreign('id_persona')->references('id')->on('personas');
         });
 
     }
@@ -34,6 +34,6 @@ return new class extends Migration
     public function down(): void
     {
         //
-        Schema::dropIfExists('usuario');
+        Schema::dropIfExists('usuarios');
     }
 };

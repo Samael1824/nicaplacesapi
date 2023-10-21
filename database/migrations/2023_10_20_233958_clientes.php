@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('facebook', 150);
             $table->string('instagram', 150)->unique();
             $table->string('twitter', 150)->nullable();
+            $table->foreign('id_persona')->references('id')->on('personas');
         });
     }
 

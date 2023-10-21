@@ -18,4 +18,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/Persona', '\App\Http\Controllers\PersonaController@index');
+Route::get('/Personas', '\App\Http\Controllers\PersonaController@index');

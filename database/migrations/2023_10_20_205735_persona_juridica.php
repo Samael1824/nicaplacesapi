@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         //
-        Schema::create("persona_juridica", function (Blueprint $table) {
+        Schema::create("persona_juridicas", function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_persona');
-            $table->foreign('id_persona')->references('id')->on('persona');
+            $table->foreign('id_persona')->references('id')->on('personas');
             $table->string('apellido', 80);
             $table->string('cedula', 14)->unique();
             $table->date('fecha_nacimiento')->nullable();
@@ -30,6 +30,6 @@ return new class extends Migration
     public function down(): void
     {
         //
-        Schema::dropIfExists('persona_juridica');
+        Schema::dropIfExists('persona_juridicas');
     }
 };
