@@ -9,9 +9,10 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class PersonaNatural extends Model
 {
     use HasFactory;
-    public function PersonaNatural(): HasOne
+    public function Persona(): HasOne
     {
-        return $this->hasOne(PersonaNatural::class);
+        return $this->hasOne(Persona::class);
         
     }
+    
 }
