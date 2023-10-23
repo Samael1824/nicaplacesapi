@@ -81,7 +81,7 @@ class PersonaController extends Controller
     public function update(Request $request, Persona $persona)
     {
         $persona = new Persona;
-        $personaNatural = new PersonaNatural;
+        //$personaNatural = new PersonaNatural;
 
         $persona->nombre = $request->nombre;
         $persona->telefono = $request->telefono;
@@ -89,12 +89,14 @@ class PersonaController extends Controller
         $persona->foto = $request->foto;#reparar
         $persona->save();
 
-        $personaNatural->id_persona = $persona->id;
+        $personaNatural = PersonaNatural::where('id_persona', $persona->id); // buscar el de la persona natural correspondiente
+        //$personaNatural->id_persona = $persona->id;
         $personaNatural->apellido = $request->apellido;
         $personaNatural->cedula = $request->cedula;
         $personaNatural->fecha_nacimiento = $request->fecha_nacimiento;
         $personaNatural->genero = $request->genero;
         $personaNatural->save();
+        
         $data=[
             'message' => 'Se ha actualizado con exito',
             'persona' => $persona,
